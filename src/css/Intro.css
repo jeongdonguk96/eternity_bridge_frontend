@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black; /* 전체 배경색 */
+}
+
+.Intro {
+  color: white; /* 글씨색을 흰색으로 설정 */
+  width: 100vw; /* 화면 너비 전체 */
+  height: 100vh; /* 화면 높이 전체 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.laptop_img {
+  width: 300px; /* 원하는 크기로 조절 */
+  height: auto; /* 비율 유지 */
+}
