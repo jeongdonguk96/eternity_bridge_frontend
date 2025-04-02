@@ -1,11 +1,7 @@
 import "../css/MemorialItem.css";
 
-const MemorialItem = ({ id, name }) => {
-  return (
-    <div className="MemorialItem">
-      {id}, {name}
-    </div>
-  );
+const MemorialItem = (data) => {
+  return <div className="MemorialItem">{Object.values(data).join(", ")}</div>;
 };
 
 export default MemorialItem;
