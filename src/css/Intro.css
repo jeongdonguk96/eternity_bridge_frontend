@@ -1,10 +1,7 @@
-body {
+.Intro {
   margin: 0;
   padding: 0;
-  background-color: black; /* 전체 배경색 */
-}
-
-.Intro {
+  background-color: black;
   color: white; /* 글씨색을 흰색으로 설정 */
   width: 100vw; /* 화면 너비 전체 */
   height: 100vh; /* 화면 높이 전체 */
