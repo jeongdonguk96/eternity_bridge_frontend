@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Editor from "../components/Editor";
-import { createMemorialHalls } from "../services/EmotionService";
+import { createMemorialHalls } from "../services/MemorialHallsService";
 import "../css/New.css";
 
 const New = () => {
