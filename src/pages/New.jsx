@@ -1,13 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import Editor from "../components/Editor";
-import { createMemorialHalls } from "../services/MemorialHallsService";
+import { createMemorialHall } from "../services/MemorialHallsService";
+import { createPet } from "../services/PetService";
 import "../css/New.css";
 
 const New = () => {
   const nav = useNavigate();
 
-  const onSubmit = (input) => {
-    createMemorialHalls(input);
+  const onSubmit = async (input) => {
+    const petId = await createPet(input);
+    await createMemorialHall({ petId: petId });
 
     nav("/", { replace: true });
   };

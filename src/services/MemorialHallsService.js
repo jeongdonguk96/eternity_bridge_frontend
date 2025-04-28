@@ -6,14 +6,18 @@ export const getMemorialHalls = (cursorValue, sort) => {
   return axios.get(`${API_URL}?cursorValue=${cursorValue}&sort=${sort}`);
 };
 
-export const createMemorialHalls = (data) => {
-  return axios.post(`${API_URL}`, data);
+export const createMemorialHall = (data) => {
+  return axios.post(`${API_URL}`, data, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 };
 
-export const modifyMemorialHalls = (data) => {
+export const modifyMemorialHall = (data) => {
   return axios.put(`${API_URL}/${data.id}`, data);
 };
 
-export const deleteMemorialHalls = (data) => {
+export const deleteMemorialHall = (data) => {
   return axios.delete(`${API_URL}/${data.id}`);
 };

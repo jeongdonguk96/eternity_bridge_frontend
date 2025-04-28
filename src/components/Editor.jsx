@@ -8,7 +8,6 @@ import { ImageDomain } from "../enums/ImageDomain";
 const Editor = ({ onSubmit }) => {
   const nav = useNavigate();
   const [step, setStep] = useState(1); // 현재 단계 (1: 이미지 등록, 2: 정보 입력)
-  const [imageUrl, setImageUrl] = useState("");
   const [input, setInput] = useState({
     name: "",
     nickname: "",
@@ -16,7 +15,8 @@ const Editor = ({ onSubmit }) => {
     birthDate: "",
     deathDate: "",
     profileImage: null,
-    dotImage: "",
+    profileImageUrl: "",
+    dotImageUrl: "",
   });
 
   const onChangeInput = (e) => {
@@ -38,21 +38,27 @@ const Editor = ({ onSubmit }) => {
   };
 
   // 이미지를 등록하고 다음 입력 화면으로 넘어간다.
-  const onNextStep = () => {
+  const onNextStep = async () => {
     if (!input.profileImage) {
       alert("이미지를 먼저 등록해주세요.");
       return;
     }
 
-    callCreateImage(); // 이미지를 우선 등록한다.
+    await callCreateImage(); // 이미지를 우선 등록한다.
     setStep(2); // 다음 단계로 이동한다.
   };
 
   // 이미지 등록 API를 호출한다.
-  const callCreateImage = () => {
-    createImage(input.profileImage, ImageDomain.PET).then((response) => {
-      setImageUrl(response);
-    });
+  const callCreateImage = async () => {
+    const profileImageUrl = await createImage(
+      input.profileImage,
+      ImageDomain.PET
+    );
+
+    setInput((prevInput) => ({
+      ...prevInput,
+      profileImageUrl: profileImageUrl,
+    }));
   };
 
   // 모든 정보를 입력하고 반려동물과 추모관을 등록한다.
